@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input:disabled {
+  @apply bg-gray-200;
+}
+
+/* input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+  @apply border rounded-lg px-2 py-3 3xl:px-3 3xl:py-4 w-full outline-primary-500;
+} */
