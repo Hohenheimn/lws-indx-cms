@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 
 import { useForm } from "react-hook-form";
@@ -13,44 +11,39 @@ import ControllerField from "@/components/ControllerField";
 import Heading from "@/components/Heading";
 import LayoutColumn from "@/components/LayoutColumn";
 
-import { PaymentFieldSchema } from "./schema";
+import { ClinicFormSchema } from "./schema";
 
-type PaymentFieldType = z.infer<typeof PaymentFieldSchema>;
+type ClinicFormType = z.infer<typeof ClinicFormSchema>;
 
-type Props = {
-  formValue?: PaymentFieldType;
-};
-
-const PaymentForm = ({ formValue }: Props) => {
-  const paymentId = false;
-  const doctorId = "sampleId kunin sa redux";
+const ClinicForm = () => {
+  const id = "sampleId kunin sa redux";
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm<PaymentFieldType>({
-    defaultValues: formValue,
-    resolver: zodResolver(PaymentFieldSchema),
+  } = useForm<ClinicFormType>({
+    defaultValues: {},
+    resolver: zodResolver(ClinicFormSchema),
   });
   const submit = () => {};
   return (
     <section>
       <div className=" mb-10">
-        <Heading element="h2">{paymentId ? "Update" : "Add"} Payment</Heading>
+        <Heading element="h2">Add Branch</Heading>
         <BreadCrumbs
           links={[
             {
               title: "Account Details",
+              url: `/doctor-management${id ? `/${id}` : ""}/account-details`,
+            },
+            {
+              title: "Manage Clinics",
               url: `/doctor-management${
-                doctorId ? `/${doctorId}` : ""
-              }/account-details`,
+                id ? `/${id}` : ""
+              }/account-details/clinics`,
             },
             {
-              title: "Billing Details",
-              url: "?tab=account-details&manage=billing-details",
-            },
-            {
-              title: `${paymentId ? "Update" : "Add"} Payment`,
+              title: "Add Branch",
               url: "",
             },
           ]}
@@ -60,52 +53,58 @@ const PaymentForm = ({ formValue }: Props) => {
         <ControllerField
           control={control}
           errors={errors}
-          name={"paymentDate"}
-          type={"date"}
-          label="Payment Date"
+          name={"branchName"}
+          type={"text"}
+          label="Branch Name"
         />
         <ControllerField
           control={control}
           errors={errors}
-          name={"accountType"}
-          type={"select"}
-          label="Account Type"
-          selectOptions={["Free", "Basic", "Standard", "Premium"]}
+          name={"email"}
+          type={"email"}
+          label="Email Address"
         />
         <ControllerField
           control={control}
           errors={errors}
-          name={"amount"}
-          type={"number"}
-          label="Amount"
+          name={"mobileNumber"}
+          type={"mobileNo"}
+          label="Mobile Number"
         />
         <div>
-          <p className=" text-[.9rem] text-gray-500">Service Period</p>
+          <p className=" text-[.9rem] text-gray-500">Address</p>
           <LayoutColumn colNumber={2}>
             <ControllerField
               control={control}
               errors={errors}
-              name={"startDate"}
-              type={"date"}
-              label="Start Date"
+              name={"zipCode"}
+              type={"number"}
+              label="Zip Code"
             />
             <ControllerField
               control={control}
               errors={errors}
-              name={"endDate"}
-              type={"date"}
-              label="End Date"
+              name={"city"}
+              type={"text"}
+              label="City"
+            />
+            <ControllerField
+              control={control}
+              errors={errors}
+              name={"region"}
+              type={"text"}
+              label="Region"
+            />
+            <ControllerField
+              control={control}
+              errors={errors}
+              name={"country"}
+              type={"text"}
+              label="Country"
             />
           </LayoutColumn>
         </div>
-        <ControllerField
-          control={control}
-          errors={errors}
-          name={"paymentMethod"}
-          type={"select"}
-          label="Payment Method"
-          selectOptions={["Credit Card", "Cheque"]}
-        />
+
         <div className=" flex justify-end">
           <Button appearance="primary" type="submit">
             SAVE
@@ -116,4 +115,4 @@ const PaymentForm = ({ formValue }: Props) => {
   );
 };
 
-export default PaymentForm;
+export default ClinicForm;

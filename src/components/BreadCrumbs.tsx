@@ -18,7 +18,8 @@ const BreadCrumbs = ({ links }: Props) => {
           <Link
             href={item.url}
             className={`${
-              links.length === indx + 1 && " text-blue font-semibold"
+              links.length === indx + 1 &&
+              " text-blue font-semibold pointer-events-none"
             }`}
           >
             {item.title}

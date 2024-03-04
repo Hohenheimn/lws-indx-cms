@@ -2,9 +2,7 @@ import React from "react";
 
 import ClipLoader from "react-spinners/ClipLoader";
 
-
 import Pagination from "./Pagination";
-
 
 type Props = {
   columns: TableColumnsType[];

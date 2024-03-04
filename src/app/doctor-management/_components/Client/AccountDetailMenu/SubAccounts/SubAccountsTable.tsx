@@ -13,31 +13,29 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 import BreadCrumbs from "@/components/BreadCrumbs";
 import Button from "@/components/Button";
 import Heading from "@/components/Heading";
-import SearchBar from "@/components/SearchBar";
 import Table, { TableColumnsType } from "@/components/Table";
-import { useDebounce } from "@/hooks/useDebounce";
 
 const tableColumn = () => {
   const column: TableColumnsType[] = [
     {
-      title: "Payment Date",
-      cellKey: "paymentDate",
+      title: "First Name",
+      cellKey: "firstName",
+    },
+    {
+      title: "Last Name",
+      cellKey: "lastName",
     },
     {
       title: "Account Type",
       cellKey: "accountType",
     },
     {
-      title: "Service Period",
-      cellKey: "servicePeriod",
+      title: "Email",
+      cellKey: "email",
     },
     {
-      title: "Payment Method",
-      cellKey: "paymentMethod",
-    },
-    {
-      title: "Amount",
-      cellKey: "amount",
+      title: "Mobile Number",
+      cellKey: "mobileNumber",
     },
     {
       title: "Action",
@@ -57,7 +55,7 @@ const tableColumn = () => {
   return column;
 };
 
-const PaymentTable = () => {
+const SubAccountsTable = () => {
   const id = "sample id kunin sa redux";
   const router = useRouter();
   const [page, setPage] = useState(1);
@@ -65,7 +63,7 @@ const PaymentTable = () => {
   return (
     <section className=" space-y-5">
       <div className=" mb-10">
-        <Heading element="h2">Billing Details</Heading>
+        <Heading element="h2">Manage Sub-Accounts</Heading>
         <BreadCrumbs
           links={[
             {
@@ -73,28 +71,21 @@ const PaymentTable = () => {
               url: `/doctor-management${id ? `/${id}` : ""}/account-details`,
             },
             {
-              title: "Billing Details",
+              title: "Manage Sub-Accounts",
               url: "",
             },
           ]}
         />
       </div>
-      <ul className=" flex justify-between items-center mb-5">
-        <li>
-          <Heading element="h2">Account Type: Basic</Heading>
-          <Heading element="h2">Next Billing Date: May 15 2021</Heading>
-          <Heading element="h2">
-            Total Lifetime Subscription Amount : P2,495
-          </Heading>
-        </li>
+      <ul className=" flex justify-end items-center mb-5">
         <li>
           <Button
             appearance={"primary"}
             onClick={() => {
-              router.push("?add-payment=true");
+              router.push("?add-sub-account=true");
             }}
           >
-            + Add Payment
+            + Add Sub-Account
           </Button>
         </li>
       </ul>
@@ -103,11 +94,11 @@ const PaymentTable = () => {
         data={[
           {
             id: "1",
-            paymentDate: "05/01/21",
-            accountType: "Basic",
-            servicePeriod: "05/01/21 - 06/01/21",
-            paymentMethod: "Credit Card",
-            amount: "P499",
+            firstName: "Jomari",
+            lastName: "Tiu",
+            accountType: "Sub-Dentist",
+            email: "jomtiu16@gmail.com",
+            mobileNumber: "09515325489",
           },
         ]}
         isLoading={false}
@@ -119,4 +110,4 @@ const PaymentTable = () => {
   );
 };
 
-export default PaymentTable;
+export default SubAccountsTable;

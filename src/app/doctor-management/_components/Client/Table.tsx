@@ -11,6 +11,7 @@ import { FaRegEdit } from "react-icons/fa";
 import { RiDeleteBin5Line } from "react-icons/ri";
 
 import Button from "@/components/Button";
+import HeadingPage from "@/components/HeadingPage";
 import SearchBar from "@/components/SearchBar";
 import Table, { TableColumnsType } from "@/components/Table";
 import { useDebounce } from "@/hooks/useDebounce";
@@ -54,9 +55,7 @@ const doctorManagementTable = () => {
       render: (_, record) => (
         <ul className=" flex items-center gap-3">
           <li>
-            <Link
-              href={`/doctor-management/${record?.id}?tab=doctor-information`}
-            >
+            <Link href={`/doctor-management/${record?.id}/doctor-information`}>
               <FaRegEdit className=" text-gray-500 cursor-pointer text-xl hover:text-primary-500 duration-200" />
             </Link>
           </li>
@@ -77,7 +76,8 @@ const DoctorManagementTable = () => {
   const debounceSearch = useDebounce(search, 500);
   const column = doctorManagementTable();
   return (
-    <>
+    <section className=" space-y-5">
+      <HeadingPage>Doctor Management</HeadingPage>
       <ul className=" flex justify-between items-center">
         <li>
           <SearchBar search={search} setSearch={setSearch} />
@@ -86,7 +86,7 @@ const DoctorManagementTable = () => {
           <Button
             appearance={"primary"}
             onClick={() => {
-              router.push("?tab=doctor-information");
+              router.push("/doctor-management/add-account/doctor-information");
             }}
           >
             + Add Account
@@ -111,7 +111,7 @@ const DoctorManagementTable = () => {
         page={page}
         totalPage={10}
       />
-    </>
+    </section>
   );
 };
 
