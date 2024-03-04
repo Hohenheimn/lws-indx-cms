@@ -64,7 +64,7 @@ const Layout = ({ children }: PropsType) => {
           />
         </div>
       </aside>
-      <main className="flex-1 bg-default-page text-black p-10 min-h-screen">
+      <main className="flex-1 bg-default-page text-black pt-16 p-5 md:py-10 md:p-10 min-h-screen">
         {children}
       </main>
     </div>
