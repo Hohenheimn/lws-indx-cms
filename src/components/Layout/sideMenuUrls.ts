@@ -6,7 +6,7 @@ export type SideMenuUrlsType = {
 export const sideMenuUrls: SideMenuUrlsType[] = [
   {
     name: "Dashboard",
-    url: "/dashboard",
+    url: "/",
   },
   {
     name: "Doctor Management",

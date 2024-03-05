@@ -16,7 +16,7 @@ const SideMenuLink = ({ LinkDetail }: Props) => {
       <li
         className={` text-base 3xl:text-lg duration-150 py-3 px-5 mb-2 rounded-md text-black ${
           pathname === "/"
-            ? LinkDetail.url === "/home"
+            ? LinkDetail.url === "/dashboard"
               ? activeMenu
               : "hover:bg-primary-400"
             : pathname === LinkDetail.url
