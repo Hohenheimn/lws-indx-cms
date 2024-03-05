@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 
 import Layout from "@/components/Layout";
 import Login from "@/components/Login";
+import ReduxProvider from "@/state/ReduxProvider";
 
 import "../styles/globals.css";
 
@@ -28,7 +29,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        {userToken ? <Layout>{children}</Layout> : <Login />}
+        <ReduxProvider>
+          {userToken ? <Layout>{children}</Layout> : <Login />}
+        </ReduxProvider>
       </body>
     </html>
   );
