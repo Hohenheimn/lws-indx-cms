@@ -7,6 +7,7 @@ import HeadingPage from "@/components/HeadingPage";
 import Input from "@/components/Input";
 import LayoutColumn from "@/components/LayoutColumn";
 
+import TotalRevenue from "./_components/Charts/TotalRevenue";
 import Total from "./_components/Total";
 
 export default function Home() {
@@ -28,14 +29,6 @@ export default function Home() {
               console.log(value);
             }}
           />
-          {/* <div>
-            <label>Start Date</label>
-            <Input type="date" placeholder="Start Date" />
-          </div>
-          <div>
-            <label>End Date</label>
-            <Input type="date" />
-          </div> */}
         </li>
       </ul>
       <LayoutColumn colNumber={4}>
@@ -44,6 +37,7 @@ export default function Home() {
         <Total total={329} label={"Total Patient Records"} />
         <Total total={10} label={"Total Cancelled Registered"} />
       </LayoutColumn>
+      <TotalRevenue />
     </section>
   );
 }

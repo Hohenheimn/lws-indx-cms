@@ -1,7 +1,5 @@
 import React from "react";
 
-import Heading from "@/components/Heading";
-
 type Props = {
   total: string | number;
   label: string;
