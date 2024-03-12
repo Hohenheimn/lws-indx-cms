@@ -7,15 +7,14 @@ import HeadingPage from "@/components/HeadingPage";
 import Input from "@/components/Input";
 import LayoutColumn from "@/components/LayoutColumn";
 
+import AgeChart from "./_components/Charts/Age";
+import LocationChart from "./_components/Charts/Location";
+import MaleFemaleChart from "./_components/Charts/MaleFemale";
 import TotalRevenue from "./_components/Charts/TotalRevenue";
+import MostUsers from "./_components/MostUsers";
 import Total from "./_components/Total";
 
 export default function Home() {
-  const [isPeriod, setPeriod] = useState({
-    from: "",
-    to: "",
-  });
-
   return (
     <section className=" space-y-5">
       <ul className=" flex gap-3 flex-wrap justify-between items-center">
@@ -38,6 +37,16 @@ export default function Home() {
         <Total total={10} label={"Total Cancelled Registered"} />
       </LayoutColumn>
       <TotalRevenue />
+      <ul className=" grid grid-cols-3 gap-5">
+        <li className="space-y-5 col-span-2">
+          <MaleFemaleChart />
+          <LocationChart />
+        </li>
+        <li className=" col-span-1 space-y-5">
+          <AgeChart />
+          <MostUsers />
+        </li>
+      </ul>
     </section>
   );
 }

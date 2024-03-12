@@ -10,11 +10,7 @@ import {
   ArcElement,
 } from "chart.js";
 import ChartDataLabels from "chartjs-plugin-datalabels";
-import { Bar, Pie } from "react-chartjs-2";
-
-import { IoIosMenu } from "react-icons/io";
-
-import Heading from "./Heading";
+import { Bar, Pie, Doughnut } from "react-chartjs-2";
 
 ChartJS.register(
   CategoryScale,
@@ -36,7 +32,7 @@ type PropsType = {
       backgroundColor: string;
     }[];
   };
-  type: "bar" | "pie";
+  type: "bar" | "pie" | "doughnut";
   options: any;
   chartName: string;
 };
@@ -64,6 +60,18 @@ const ChartComponent = ({ chartData, type, options, chartName }: PropsType) => {
         <div className=" flex w-full items-center justify-center">
           <div className=" w-11/12 max-w-[20rem]">
             <Pie
+              ref={chartRef}
+              data={data}
+              options={options}
+              plugins={plugins}
+            />
+          </div>
+        </div>
+      )}
+      {type === "doughnut" && (
+        <div className=" flex w-full items-center justify-center">
+          <div className=" w-11/12 max-w-[20rem]">
+            <Doughnut
               ref={chartRef}
               data={data}
               options={options}
