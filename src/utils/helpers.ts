@@ -1,9 +1,11 @@
 import { ChangeEvent } from "react";
+import clsx, { ClassValue } from "clsx";
 import {
   differenceInDays,
   differenceInMonths,
   differenceInYears,
 } from "date-fns";
+import { twMerge } from "tailwind-merge";
 
 export const getBirthDate = (birthDate: Date | string) => {
   // Assuming birthDate is a valid Date object
@@ -53,4 +55,8 @@ export const displayImage = (
     });
   });
   return file;
+};
+
+export const classnameMerge = (...inputs: ClassValue[]) => {
+  return twMerge(clsx(inputs));
 };

@@ -4,8 +4,7 @@ import { setCookie } from "cookies-next";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 import Button from "../Button";
 import ControllerField from "../ControllerField";
