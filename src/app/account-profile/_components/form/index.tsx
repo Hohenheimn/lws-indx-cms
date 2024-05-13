@@ -24,8 +24,7 @@ type PropsType = {
 
 const AccountProfileForm = ({ formValue }: PropsType) => {
   const id = formValue?.id;
-  const fieldSchema = id
-    ? AccountProfileSchema.refine(
+  const fieldSchema = id ? AccountProfileSchema.refine(
         (data) => data.newPassword === data.confirmPassword,
         {
           message: "Passwords do not match",
